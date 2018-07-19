@@ -49,8 +49,6 @@ def receive_input(argv):
 
     vault_backend = vault_host + vault_backend
 
-    # print('INPUT: ', vault_token, vault_backend, mode, key, value)
-
     if not vault_backend or not mode or not vault_host or not vault_token:
         print("Error, please provide more variables" + "\n")
         print_help()
@@ -78,8 +76,6 @@ def receive_input(argv):
 # READING FROM VAULT BACKEND
 def vault_read(vault_backend, vault_token):
     read = requests.get(vault_backend, headers=vault_token, verify=False)
-
-    # print(read.status_code)
 
     if read.status_code == 404:
         print("ERROR, cant read backend, status_code:", read.status_code, 'backend:', vault_backend)
